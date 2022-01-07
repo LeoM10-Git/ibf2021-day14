@@ -1,6 +1,10 @@
 package com.example.ibf2021d13.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    // add Serializable serialVersionUID
+    private static final long serialVersionUID = 1L;
     private String name;
     private String email;
     private String phoneNumber;
