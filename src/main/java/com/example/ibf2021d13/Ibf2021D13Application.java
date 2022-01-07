@@ -15,21 +15,21 @@ import java.nio.file.Paths;
 public class Ibf2021D13Application {
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(Ibf2021D13Application.class);
-        String pathName;
-        try{
-            ApplicationArguments cliOpts = new DefaultApplicationArguments(args);
-            if (cliOpts.containsOption("dataDir") && cliOpts.getOptionValues("dataDir").get(0) != null){
-                pathName = cliOpts.getOptionValues("dataDir").get(0);
-                Path path = Paths.get(pathName);
-                if (!Files.exists(path)) Files.createDirectories(path);
-                app.run(args);
-            }else{
-                System.out.println("No dataDir option provided, program stopped!");
-            }
-        } catch (IOException ex) {
-            System.out.println("No dataDir option provided, program stopped!");
-        }
-
+//        SpringApplication app = new SpringApplication(Ibf2021D13Application.class);
+//        String pathName;
+//        try{
+//            ApplicationArguments cliOpts = new DefaultApplicationArguments(args);
+//            if (cliOpts.containsOption("dataDir") && cliOpts.getOptionValues("dataDir").get(0) != null){
+//                pathName = cliOpts.getOptionValues("dataDir").get(0);
+//                Path path = Paths.get(pathName);
+//                if (!Files.exists(path)) Files.createDirectories(path);
+//                app.run(args);
+//            }else{
+//                System.out.println("No dataDir option provided, program stopped!");
+//            }
+//        } catch (IOException ex) {
+//            System.out.println("No dataDir option provided, program stopped!");
+//        }
+        SpringApplication.run(Ibf2021D13Application.class, args);
     }
 }

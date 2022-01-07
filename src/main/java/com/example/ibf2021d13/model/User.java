@@ -1,7 +1,10 @@
 package com.example.ibf2021d13.model;
 
+import org.springframework.data.redis.core.RedisHash;
+
 import java.io.Serializable;
 
+@RedisHash("User")
 public class User implements Serializable {
     // add Serializable serialVersionUID
     private static final long serialVersionUID = 1L;
