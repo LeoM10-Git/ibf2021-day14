@@ -8,6 +8,6 @@ public class TestFileNameGenerator {
         Contacts contacts = new Contacts();
         System.out.println(contacts.getAlphabet());
         System.out.println(contacts.getNumbers());
-        System.out.println(contacts.fileNameGenerator());
+        System.out.println(contacts.idGenerator());
     }
 }

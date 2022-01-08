@@ -8,29 +8,32 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
+@EnableRedisRepositories
 public class AppConfig {
-    @Value("${redisDatabase}")
-    private Integer redisDatabase;
-    @Value("{redisHost}")
-    private String redisHost;
 
     @Bean
-    @Scope("singleton")
-    public RedisTemplate<String, Object> createRedisTemplate() {
+    public JedisConnectionFactory connectionFactory(){
+        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration();
+        configuration.setHostName("localhost");
+        configuration.setPort(6379);
+        return new JedisConnectionFactory(configuration);
+    }
 
-        final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
-        config.setDatabase(redisDatabase);
-        config.setHostName(redisHost);
-        final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();
-        final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);
-        jedisFac.afterPropertiesSet();
-        final RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(jedisFac);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new StringRedisSerializer());
-        return template;
+    public RedisTemplate<String, Object> redisTemplate(){
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(connectionFactory());
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        redisTemplate.setHashKeySerializer(new JdkSerializationRedisSerializer());
+        redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
+        redisTemplate.setEnableTransactionSupport(true);
+        redisTemplate.afterPropertiesSet();
+        return redisTemplate;
+
     }
 }

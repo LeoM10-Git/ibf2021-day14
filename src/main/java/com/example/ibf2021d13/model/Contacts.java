@@ -11,18 +11,18 @@ public class Contacts {
             "v", "w", "x", "y", "z");
 
     private final List<String> numbers= Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
-    public String fileNameGenerator(){
+    public String idGenerator(){
         Collections.shuffle(alphabet);
         Collections.shuffle(numbers);
-        String fileName = alphabet.get(0);
+        String id = alphabet.get(0);
 
         for (int i=0; i<3; i++){
-            fileName = fileName + alphabet.get(i);
+            id = id + alphabet.get(i);
         }
         for (int i=0; i<4; i++){
-            fileName = fileName + numbers.get(i);
+            id = id + numbers.get(i);
         }
-        return fileName;
+        return id;
     }
     public List<String> getAlphabet() {
         return alphabet;
