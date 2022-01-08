@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public class UserDao {
     public static final String HASH_KEY = "User";
-
     @Autowired
     private RedisTemplate redisTemplate;
 

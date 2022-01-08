@@ -1,3 +1,0 @@
-name= a
-email= das@sd
-phoneNumber= 31231

@@ -8,6 +8,8 @@
     <h1>User information</h1>
     <h3 style="white-space: pre-line" th:text="${userWithId}"></h3>
     <h3 th:text="${warning}"></h3>
-    <h3 style="white-space: pre-line" th:each="user: ${allUsers}" th:text="${user}"></h3>
+    <ol>
+        <li style="white-space: pre-line; margin: 30px 0;" th:each="user: ${allUsers}" th:text="${user}"></li>
+    </ol>
 </body>
 </html>
