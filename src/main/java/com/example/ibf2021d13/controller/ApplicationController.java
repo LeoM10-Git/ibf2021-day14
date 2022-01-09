@@ -30,8 +30,9 @@ public class ApplicationController {
         String userId = contacts.idGenerator();
         user.setId(userId);
         userDao.saveUser(user);
-        String message = "User data created!, UserId: " + userId;
+        String message = "User data created! \nUserId: ";
         model.addAttribute("info", message);
+        model.addAttribute("userId", userId);
         return "index";
     }
 

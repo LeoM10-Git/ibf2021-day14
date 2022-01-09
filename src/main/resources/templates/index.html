@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
-    <form th:action="@{/submit}" method="post">
-        <input type="text" name="name" placeholder="Name">
-        <br>
-        <input type="text" name="email" placeholder="Email">
-        <br>
-        <input type="text" name="phoneNumber" placeholder="Phone number">
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-    <h3 th:text="${info}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-6 card">
+                <h1 class="text-center"> User Information Form</h1>
+                <div class="card-body">
+                    <form th:action="@{/submit}" method="post">
+                        <div class="form-group">
+                            <label >Name: </label>
+                            <input type="text" name="name" placeholder="Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label > Email: </label>
+                            <input type="text" name="email" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label >Phone Number: </label>
+                            <input type="text" name="phoneNumber" placeholder="Phone number" class="form-control">
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit" class="btn btn-primary btn-outline-dark">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <h3 >
+                <span style="white-space: pre-line" th:text="${info}"></span>
+                <span style="white-space: pre-line" th:text="${userId}" class="text-success"></span>
+            </h3>
+        </div>
+    </div>
+
 </body>
 </html>
